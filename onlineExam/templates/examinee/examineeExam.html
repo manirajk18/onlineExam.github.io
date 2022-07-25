@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinee Exam</title>
+</head>
+<body>
+    <div><a href="http://localhost:8000/examinee/result/">Examinee Result</a></div>
+    <div><a href="http://localhost:8000/examinee/logout/">Logout</a></div>
+    <form action="http://localhost:8000/examinee/result/" method="post">
+        {%csrf_token%}
+        {% for q in Questions %}
+        <h3>{{q.qno}}. {{q.que}}</h3>
+        <ol style="list-style:none">
+            <li><input type="radio" name={{q.qno}}>{{q.a}}</li>
+            <li><input type="radio" name={{q.qno}}>{{q.b}}</li>
+            <li><input type="radio" name={{q.qno}}>{{q.c}}</li>
+            <li><input type="radio" name={{q.qno}}>{{q.d}}</li>
+        </ol>
+        {% endfor %}
+        <div><input type="submit" value="Submit"></div>
+    </form>
+</body>
+</html>
